@@ -3,6 +3,7 @@ import Portada from './components/Portada.jsx'
 import Carta from './components/Carta.jsx'
 import Horario from './components/Horario.jsx'
 import Pie from './components/Pie.jsx'
+import Contacto from './components/Contacto.jsx'
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       subtitulo="Tu cafetería de barrio: café de especialidad, desayunos y bollería casera."
       />
       <Carta />
-      <Horario />   
+      <Horario />
+      <Contacto />
     </main>
     <Pie />
     </>
