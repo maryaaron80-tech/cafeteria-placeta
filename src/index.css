@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -97,6 +98,7 @@ h1, h2, h3 {
   color: var(--cafe);
   font-weight: 700;
   text-decoration: none;
+  font-family: inherit;
 }
 
 .boton:hover {
@@ -279,3 +281,22 @@ h1, h2, h3 {
     opacity: 0.6;
     cursor: wait;
    }
+
+
+
+   /* =====================================
+      9. Ajustes para móvil
+      ===================================== */
+      @media (max-width: 600px) {
+        .seccion {
+          padding: 36px 5vw;
+        }
+
+        .portada {
+          padding: 56px 5vw;
+        }
+
+        .formulario {
+          padding: 20px;
+        }
+      }
