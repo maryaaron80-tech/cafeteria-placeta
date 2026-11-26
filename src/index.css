@@ -274,3 +274,8 @@ h1, h2, h3 {
     color: var(--crema);
     cursor: pointer;
    }
+
+   .formulario .boton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+   }

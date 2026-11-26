@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { supabase } from '../supabase.js';
 
 function Contacto() {
   // Estado: lo que el usuario escribe, los errores y si ya se envió
   const [datos, setDatos] = useState({ nombre: '', email: '', mensaje: '' })
   const [errores, setErrores] = useState({})
   const [enviado, setEnviado] = useState(false)
+  const [enviando, setEnviando] = useState(false)
+  const [errorEnvio, setErrorEnvio] = useState('')
 
   //Cada vez que se escribe en un campo, se guarda en el estado
 function cambiar(evento) {
@@ -21,13 +24,29 @@ function validar() {
     return nuevos
 }
 
-function enviar(evento) {
+async function enviar(evento) {
     evento.preventDefault()
     const nuevos = validar()
     setErrores(nuevos)
     if (Object.keys(nuevos).length > 0) return
 
-    // De momento solo simulamos el envio; en la fase 4 irá a Supabase
+    setEnviando(true)
+    setErrorEnvio('')
+
+    const { error } = await supabase.from('mensajes_contacto').insert({
+        nombre: datos.nombre.trim(),
+        email: datos.email.trim(),
+        mensaje: datos.mensaje.trim()
+    })
+
+    setEnviando(false)
+
+    if (error) {
+        console.error(error)
+        setErrorEnvio('No se ha podido enviar el mensaje. Inténtelo de nuevo en unos minutos.')
+        return
+    }
+
     setEnviado(true)
     setDatos({ nombre: '', email: '', mensaje: '' })
 }
@@ -62,8 +81,10 @@ return (
                     <textarea name="mensaje" rows="5" value={datos.mensaje} onChange={cambiar} />
                     {errores.mensaje && <span className="error">{errores.mensaje}</span>}
                 </label>
-
-                <button type="submit" className="boton">Enviar</button>
+                {errorEnvio && <p className="error">{errorEnvio}</p>}
+                <button type="submit" className="boton" disabled={enviando}>
+                    {enviando ? 'Enviando...' : 'Enviar'}
+                </button>
             </form>
         )}
     </section>
