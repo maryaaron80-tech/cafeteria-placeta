@@ -1,16 +1,30 @@
-# React + Vite
+# ☕ Café La Placeta
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Landing page de una cafetería de barrio, hecha con **React** como práctica de un encargo real: debía verse bien en móvil, tener un formulario de contacto que funcione y estar publicada con una URL pública.
 
-Currently, two official plugins are available:
+**🔗 Ver en vivo:** https://cafeteria-placeta.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Capturas
 
-## React Compiler
+| Escritorio | Móvil |
+|---|---|
+| ![Vista de escritorio](docs/capturas/escritorio.png) | ![Vista de móvil](docs/capturas/movil.png) |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Qué incluye
 
-## Expanding the Oxlint configuration
+- **Portada** con llamada a la acción que lleva al formulario.
+- **Carta** generada a partir de una lista de datos (`src/datos/carta.js`), sin repetir código.
+- **Horario** y dirección.
+- **Formulario de contacto** con validación y mensajes de error; los mensajes se guardan en Supabase.
+- **Diseño adaptado a móvil** con media queries.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Tecnologías
+
+- React 19 + Vite
+- Supabase (base de datos PostgreSQL)
+- CSS propio, sin librerías
+- Vercel (publicación automática con cada `git push`)
+
+## Cómo ejecutarlo en tu ordenador
+
+1. Clona el repositorio e instala las dependencias:
